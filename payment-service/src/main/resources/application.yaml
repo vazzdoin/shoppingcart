@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: PAYMENT-SERVICE
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/paymentdb
+    username: root
+    password: Password@321
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+  # This is to configure the config server(Git)
+  config:
+    import: optional:configserver:http://localhost:9296
